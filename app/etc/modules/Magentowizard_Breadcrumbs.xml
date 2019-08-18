@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentowizard_Breadcrumbs>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Magentowizard_Breadcrumbs>
+    </modules>
+</config> 
+

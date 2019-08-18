@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Magentowizard_Breadcrumbs>
+            <version>0.0.1</version>
+        </Magentowizard_Breadcrumbs>
+    </modules>
+    <global>
+        <models>
+            <magentowizard_breadcrumbs>
+                <class>Magentowizard_Breadcrumbs_Model</class>
+            </magentowizard_breadcrumbs>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <catalog_controller_product_view>
+                <observers>
+                    <add_category_to_breadcrumbs>
+                      <class>Magentowizard_Breadcrumbs_Model_Observer</class>
+                      <method>addCategoryToBreadcrumbs</method>
+                    </add_category_to_breadcrumbs>
+                </observers>
+            </catalog_controller_product_view>
+        </events>
+    </frontend>
+</config>
