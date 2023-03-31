@@ -9,18 +9,17 @@ class Magentowizard_Breadcrumbs_Model_Observer extends Mage_Core_Model_Observer
         }
 
         $product = $observer->getProduct();
-
-        $product->setDoNotUseCategoryId(false);
         $categoryIds = $product->getCategoryIds();
 
-        if (count($categoryIds)) {
+        if (!empty($categoryIds)) {
             $categories = Mage::getModel('catalog/category')->getCollection()
                 ->addAttributeToFilter('entity_id', $categoryIds)
-                ->addAttributeToFilter('is_active', 1);
+                ->addAttributeToFilter('is_active', 1)
+                ->addAttributeToSort('level', 'DESC')
+                ->setPageSize(1)
+                ->getFirstItem();
 
-            $categories->getSelect()->order('level DESC')->limit(1);
-
-            Mage::register('current_category', $categories->getFirstItem());
+            Mage::register('current_category', $categories);
         }
     }
 }
